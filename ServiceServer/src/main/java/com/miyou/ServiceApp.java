@@ -1,4 +1,4 @@
-package com.forezp;
+package com.miyou;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,15 +8,16 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
-
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableCircuitBreaker
-public class ServiceFeignApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(ServiceFeignApplication.class, args);
-    }
+public class ServiceApp {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ServiceApp.class, args);
+	}
+
 }

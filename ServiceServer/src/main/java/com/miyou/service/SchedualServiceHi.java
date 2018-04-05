@@ -1,5 +1,6 @@
-package com.forezp;
+package com.miyou.service;
 
+import com.miyou.errorback.SchedualServiceHiHystric;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
