@@ -1,6 +1,6 @@
 package com.miyou.Controller;
 
-import com.miyou.vo.MiyouUser;
+import com.miyou.MiyouUser;
 
 public class Demo {
 

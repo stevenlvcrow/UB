@@ -1,4 +1,4 @@
-package com.miyou.bean;
+package com.miyou.tableVo;
 
 
 import lombok.Data;

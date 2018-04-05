@@ -1,4 +1,4 @@
-package com.miyou.vo;
+package com.miyou;
 
 
 
