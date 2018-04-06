@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class UbTtest {
+public class UbTest {
 
     @Id
     @GeneratedValue
