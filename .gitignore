@@ -1,3 +1,12 @@
-/.idea
 /.idea/
+/.idea/*
 *.iml
+*.log
+/WWW/node_modules/
+.project
+/WWW/dist
+/WWW/dist/*
+/WWW/src/config/*.tmp
+/WWW/src/config/env.js
+/WWW/npm-debug.log
+/WWW/src/assets/theme/
