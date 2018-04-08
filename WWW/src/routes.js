@@ -9,14 +9,19 @@ let routes = [
         name: '',
         hidden: true
     },
+    {
+        path: '/',
+        component: Home,
+        name: '',
+        hidden: true
+    },
     // {
     //     path: '/',
     //     component: Home,
     //     name: '银商优选',
     //     iconCls: 'el-icon-plus',//图标样式class
     //     children: [
-    //         {path: '/statisnotify', component: (resolve) => require(['./views/qmcs/statisnotify/orderstatis.vue'], resolve), name: '统计与通知'},
-    //
+    //         {path: '/statisnotify', component: (resolve) => require(['./views/test/test.vue'], resolve), name: '测试'},
     //     ]
     // },
 
