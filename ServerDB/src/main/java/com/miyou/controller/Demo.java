@@ -22,7 +22,9 @@ public class Demo {
     @RequestMapping("/hi")
     public String home(@RequestParam String name) {
         MiyouUser miyouUser = new MiyouUser();
-        customerRepository.findAll();
+        //customerRepository.findAll();
+        String outParam = customerRepository.deleteTestCase("1","1","1","1");
+        System.out.println(outParam);
         return "hi "+name+",i am from port:" +port;
     }
 }

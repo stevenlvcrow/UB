@@ -9,7 +9,7 @@ spring:
   application:
     name: service-hi
   datasource:
-    url: jdbc:mysql://47.94.11.123:3306/wwwdb
+    url: jdbc:mysql://47.106.148.133:3306/test
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
     password: admin
