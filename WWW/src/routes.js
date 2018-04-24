@@ -10,32 +10,30 @@ let routes = [
         hidden: true
     },
     {
-        path: '/',
-        component: Home,
-        name: '',
-        hidden: true
-    },
-    // {
-    //     path: '/',
-    //     component: Home,
-    //     name: '银商优选',
-    //     iconCls: 'el-icon-plus',//图标样式class
-    //     children: [
-    //         {path: '/statisnotify', component: (resolve) => require(['./views/test/test.vue'], resolve), name: '测试'},
-    //     ]
-    // },
-
-    {
-        path: '*',
-        hidden: true,
-        redirect: {path: '/404'}
-    },
-    {
         path: '/404',
         component: NotFound,
         name: '',
         hidden: true
     },
+    {
+        path: '/',
+        component: Home,
+        name: '商户管理',
+        iconCls: 'el-icon-plus',//图标样式class
+        children: [
+            {
+                path: '/main',
+                component: (resolve) => require(['./views/test/test.vue'], resolve),
+                name: '会员管理'
+            },
+        ]
+    },
+
+    {
+        path: '*',
+        hidden: true,
+        redirect: {path: '/404'}
+    }
 ];
 
 export default routes;

@@ -1,107 +1,294 @@
 <template>
-    <el-container style="border: 1px solid #eee">
-        <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-            <el-menu :default-openeds="['1', '3']">
-                <el-submenu index="1">
-                    <template slot="title"><i class="el-icon-message"></i>导航一</template>
-                    <el-menu-item-group>
-                        <template slot="title">分组一</template>
-                        <el-menu-item index="1-1">选项1</el-menu-item>
-                        <el-menu-item index="1-2">选项2</el-menu-item>
-                    </el-menu-item-group>
-                    <el-menu-item-group title="分组2">
-                        <el-menu-item index="1-3">选项3</el-menu-item>
-                    </el-menu-item-group>
-                    <el-submenu index="1-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="1-4-1">选项4-1</el-menu-item>
+
+    <el-row class="container">
+        <el-col :span="24" class="header">
+            <el-col :span="10" class="logo" :class="isCollapse?'logo-collapse-width':'logo-width'">
+                <img src="../assets/Bitmap.png">
+                {{isCollapse ? '' : sysName}}
+            </el-col>
+            <el-col :span="10">
+                <div class="tools">
+                    <!--<i class="fa fa-align-justify" @click="collapse"></i>-->
+                    <!--<i class="fa fa-home line-tools" @click="gohome"></i>-->
+                    <span v-if="merchant">
+                         <el-popover
+                                 ref="popover1"
+                                 placement="top-start"
+                                 title="商户切换"
+                                 width="490"
+                                 trigger="hover">
+                        <template>
+                            <el-table :data="tableData">
+                                <el-table-column prop="name" label="商户名称"></el-table-column>
+                                <el-table-column prop="type" label="商户类型" :formatter="fomatType"></el-table-column>
+                                <el-table-column label="操作">
+                                    <template slot-scope="scope">
+                                        <el-button type="default" size="mini"
+                                                   @click="switchMerchant(scope.row.id)"
+                                        >确认切换</el-button>
+                                    </template>
+                                </el-table-column>
+                            </el-table>
+                        </template>
+                    </el-popover>
+                        <i class="line-text" v-popover:popover1>商户名称：{{merchant.name}}</i>
+                    </span>
+
+
+                    <i class="line-text" v-if="roles!=''">登录角色：{{roles}}</i>
+                    <i class="line-text" >所属机构：{{orgName}}</i>
+                    <!--<a href="/qmfrural-shop-portal/manage/index.html" style="margin-left: 20px">返回旧版</a>-->
+
+                </div>
+            </el-col>
+            <el-col :span="4" class="userinfo">
+                <i class="fa fa-user-o"></i>
+                <i class="userinfo-inner">
+                    <el-tooltip class="item" :content="sysUserName" placement="top">
+                        <span>sysUserName</span>
+                    </el-tooltip>
+                </i>
+                <i class="fa fa-sign-out icon-padding" aria-hidden="true"></i>
+                <i class="userinfo-inner" @click="logout">退出</i>
+            </el-col>
+        </el-col>
+        <el-col :span="24" class="main">
+            <el-menu :default-active="$route.path" class="el-menu-vertical-demo"
+                     text-color="#fff"
+                     unique-opened router
+                     :collapse="isCollapse">
+                <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
+                    <el-submenu :index="index+''" v-if="!item.leaf">
+                        <template slot="title">
+                            <i :class="item.iconCls"></i> <span slot="title">{{item.name}}</span>
+                        </template>
+                        <el-menu-item class="sub-demo" v-for="child in item.children"
+                                      v-if="!child.hidden" :index="child.path" :key="child.path">{{child.name}}
+                        </el-menu-item>
                     </el-submenu>
-                </el-submenu>
-                <el-submenu index="2">
-                    <template slot="title"><i class="el-icon-menu"></i>导航二</template>
-                    <el-menu-item-group>
-                        <template slot="title">分组一</template>
-                        <el-menu-item index="2-1">选项1</el-menu-item>
-                        <el-menu-item index="2-2">选项2</el-menu-item>
-                    </el-menu-item-group>
-                    <el-menu-item-group title="分组2">
-                        <el-menu-item index="2-3">选项3</el-menu-item>
-                    </el-menu-item-group>
-                    <el-submenu index="2-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-                    </el-submenu>
-                </el-submenu>
-                <el-submenu index="3">
-                    <template slot="title"><i class="el-icon-setting"></i>导航三</template>
-                    <el-menu-item-group>
-                        <template slot="title">分组一</template>
-                        <el-menu-item index="3-1">选项1</el-menu-item>
-                        <el-menu-item index="3-2">选项2</el-menu-item>
-                    </el-menu-item-group>
-                    <el-menu-item-group title="分组2">
-                        <el-menu-item index="3-3">选项3</el-menu-item>
-                    </el-menu-item-group>
-                    <el-submenu index="3-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-                    </el-submenu>
-                </el-submenu>
+                    <el-menu-item class="sub-demo" v-if="(item.leaf&&item.children.length>0)" :index="item.children[0].path">
+                        <i :class="item.iconCls"></i><span slot="title">{{item.children[0].name}}</span></el-menu-item>
+                </template>
             </el-menu>
-        </el-aside>
+            <section class="content-container">
 
-        <el-container>
-            <el-header style="text-align: right; font-size: 12px">
-                <el-dropdown>
-                    <i class="el-icon-setting" style="margin-right: 15px"></i>
-                    <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>查看</el-dropdown-item>
-                        <el-dropdown-item>新增</el-dropdown-item>
-                        <el-dropdown-item>删除</el-dropdown-item>
-                    </el-dropdown-menu>
-                </el-dropdown>
-                <span>王小虎</span>
-            </el-header>
+                <el-col :span="24" class="content-wrapper">
+                    <transition name="el-zoom-in-center" mode="out-in">
+                        <router-view></router-view>
+                    </transition>
+                </el-col>
 
-            <el-main>
-                <el-table :data="tableData">
-                    <el-table-column prop="date" label="日期" width="140">
-                    </el-table-column>
-                    <el-table-column prop="name" label="姓名" width="120">
-                    </el-table-column>
-                    <el-table-column prop="address" label="地址">
-                    </el-table-column>
-                </el-table>
-            </el-main>
-        </el-container>
-    </el-container>
+            </section>
+        </el-col>
+    </el-row>
 </template>
-<style>
-    .el-header {
-        background-color: #B3C0D1;
-        color: #333;
-        line-height: 60px;
-
-
-
-    }
-
-    .el-aside {
-        color: #333;
-    }
-</style>
 
 <script>
     export default {
+
         data() {
-            const item = {
-                date: '2016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            };
             return {
-                tableData: Array(10).fill(item)
+                sysName: '卖家平台',
+                isCollapse: false,
+                sysUserName: '',
+                sysOperator: '',
+                sysUserRole: [],
+                orgName:'',
+                merchant:'',
+                roles:[],
+                tableData: []
+            }
+        },
+        methods: {
+            //退出登录
+            logout: function () {
+                let _this = this;
+                this.$confirm('确认退出吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    loginOut().then(res=>{
+                        if(res.success){
+                            this.$message.success('注销成功');
+                        }
+                    });
+                    sessionStorage.removeItem('user');
+                    sessionStorage.removeItem('token');
+                    sessionStorage.removeItem('vuex');
+                    _this.$router.push('/login');
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 500);
+                }).catch(() => {
+
+                });
+            },
+
+        },
+        mounted() {
+
+
+
+        }
+
+    }
+
+</script>
+
+<style scoped lang="scss">
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 224px;
+        min-height: 400px;
+        line-height: 25px;
+        background-color: #333333;
+        border-radius: 0;
+        .sub-demo{
+            background-color: #333333;
+            //color: #C9C9C9 !important;
+        }
+        .is-active{
+            color: #52BEA6;
+        }
+    }
+    .el-menu{
+        border-radius: 0;
+        background-color: #333333 ;
+    }
+
+    .container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        .header {
+            height: 75px;
+            line-height: 75px;
+            background: url(../assets/bg.png) center !important;
+            //background-color: #409EFF;
+            color: #fff;
+            .userinfo {
+                text-align: right;
+                padding-right: 23px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 12px;
+                float: right;
+                .icon-padding{
+                    margin-left: 23px;
+                }
+                .userinfo-inner {
+                    cursor: pointer;
+                    font-style:normal;
+                    color: #fff;
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 20px;
+                        float: right;
+                    }
+                }
+            }
+            .logo {
+                //width:230px;
+                height: 60px;
+                font-size: 18px;
+                background: #333333 !important;
+                .txt {
+                    color: #fff;
+                    size: 18px;
+                }
+            }
+            .logo-width {
+                width: 224px;
+                img {
+                    width: 46px;
+                    float: left;
+                    margin: 10px 10px 10px 18px;
+                }
+            }
+            .logo-collapse-width {
+                img {
+                    width: 46px;
+                    margin: 10px 10px 10px 10px
+                }
+                width: 64px
+            }
+            .tools {
+                padding: 0 23px;
+                // width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 12px;
+            }
+            .line-tools {
+                margin-left: 23px;
+            }
+            .line-text{
+                margin-left: 23px;
+                font-style:normal;
             }
         }
-    };
-</script>
+        .main {
+            display: flex;
+            background: #ffffff;
+            position: absolute;
+            top: 60px;
+            bottom: 0px;
+            overflow: hidden;
+
+            .content-container {
+                // background: #f1f2f7;
+                flex: 1;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                bottom: 0px;
+                left: 230px;
+                overflow-y: scroll;
+                padding: 10px;
+                .breadcrumb-container {
+                    margin-top: 15px;
+                    .title {
+                        width: 200px;
+                        float: left;
+                        color: #475669;
+                    }
+                    .breadcrumb-inner {
+                        float: right;
+                    }
+                }
+                .content-wrapper {
+                    box-sizing: border-box;
+                    //margin-top: 10px;
+                }
+            }
+            .home-foot {
+                width: 100%;
+                position: fixed;
+                bottom: 10px;
+                text-align: left;
+            }
+        }
+
+    }
+    .text {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 18px;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+    .clearfix:after {
+        clear: both
+    }
+
+    .box-card {
+        width: 480px;
+    }
+
+</style>
