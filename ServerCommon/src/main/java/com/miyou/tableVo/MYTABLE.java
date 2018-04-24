@@ -16,4 +16,6 @@ public class MYTABLE {
 
     @Id
     private String id;
+
+    private String outParam1;
 }
