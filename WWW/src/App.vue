@@ -1,30 +1,33 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <el-button @click="startHacking">Start</el-button>
-    </div>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
+
 <script>
 export default {
-  methods: {
-    startHacking () {
-      this.$notify({
-        title: 'It works!',
-        type: 'success',
-        message: 'We\'ve laid the ground work for you. It\'s time for you to build something epic!',
-        duration: 5000
-      })
-    }
-  }
+    name: 'app'
 }
 </script>
 
-<style>
-#app {
-  font-family: Helvetica, sans-serif;
-  text-align: center;
-}
+<style lang="scss">
+  #app {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  //background: url(assets/bg1.jpg) center !important;
+    background-size: cover;
+  //background: #1F2D3D;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
 </style>

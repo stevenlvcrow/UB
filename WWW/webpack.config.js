@@ -17,6 +17,9 @@ module.exports = (options = {}) => ({
   },
   module: {
     rules: [{
+        test: /\.sass$/,
+        loaders: ['style', 'css', 'sass']
+    },{
         test: /\.vue$/,
         use: ['vue-loader']
       },
