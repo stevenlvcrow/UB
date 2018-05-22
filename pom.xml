@@ -18,12 +18,12 @@
 	</parent>
 
 	<modules>
-		<module>CenterServer</module>
-		<module>Common</module>
-		<module>DBServer</module>
-		<module>RemoteServer</module>
-		<module>ZuulServer</module>
-		<module>ServiceServer</module>
+		<module>ServerCenter</module>
+		<module>ServerCommon</module>
+		<module>ServerDB</module>
+		<module>ServerRemote</module>
+		<module>ServerZuul</module>
+		<module>ServerService</module>
 	</modules>
 
 	<properties>
