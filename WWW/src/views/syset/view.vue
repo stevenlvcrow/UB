@@ -1,5 +1,5 @@
 <template>
     <div>
-        主页
+        系统设置
     </div>
 </template>
