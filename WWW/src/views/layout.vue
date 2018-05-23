@@ -31,6 +31,19 @@
                 </template>
             </el-menu>
             <section class="content-container">
+                <el-row :gutter="24" style="margin-top: 5px">
+                    <el-col :span="22">
+                        <el-breadcrumb separator-class="el-icon-arrow-right" separator="/">
+                            <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
+                                {{ item.name }}
+                            </el-breadcrumb-item>
+                        </el-breadcrumb>
+                    </el-col>
+                    <el-col :span="2" >
+                        <el-button type="text" style="padding:0px 0px" @click="$router.push('/main')">返回首页</el-button>
+                    </el-col>
+                </el-row>
+                <hr style="height:1px;border:none;border-top:1px solid #555555;">
                 <el-col :span="24" class="content-wrapper">
                     <transition name="el-zoom-in-center" mode="out-in">
                         <router-view></router-view>
@@ -187,7 +200,7 @@
                 }
                 .content-wrapper {
                     box-sizing: border-box;
-                    //margin-top: 10px;
+                    margin-top: 10px;
                 }
             }
             .home-foot {
