@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @RestController
@@ -31,7 +32,14 @@ public class ApiController {
     @ResponseBody
     @RequestMapping("/login")
     public BusinessResponse login(@Validated @RequestBody  LoginInfo reqInStr){
+        reqInStr.setLoginResponse("登录成功");
+        return reqInStr;
+    }
 
+    @ResponseBody
+    @RequestMapping("/loginOut")
+    public BusinessResponse loginOut(HttpSession httpSession){
+        httpSession.invalidate();
         return new BusinessResponse();
     }
 }

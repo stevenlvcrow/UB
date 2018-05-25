@@ -26,7 +26,10 @@ axios.interceptors.request.use(function (config) {
     return Promise.reject(error);
 });
 axios.interceptors.response.use((response) => {
-
+    let data = response.data;
+    if(data.errCode!=='0000'){
+        throw data.errInfo;
+    }
     return response;
 }, error => {
     Message.error({
@@ -35,6 +38,4 @@ axios.interceptors.response.use((response) => {
     return Promise.reject(error)
 });
 
-
-export const url = ()=>{return `${base}`};
 export default base;
