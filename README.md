@@ -10,7 +10,7 @@ spring-could + vue + elementUi
    ##后台：  
        run ServerCenter
        run ServerDB
-       run ServerService
+       run ServerService  
    ##前端:  
        cd {classPath}/WWW  
        运行: npm run dev  
