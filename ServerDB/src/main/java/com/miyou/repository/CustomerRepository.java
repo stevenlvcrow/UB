@@ -1,12 +1,9 @@
 package com.miyou.repository;
 
 import com.miyou.tableVo.UbTest;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-
-import java.util.Map;
 
 public interface CustomerRepository extends CrudRepository<UbTest, Long> {
 
