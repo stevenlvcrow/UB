@@ -1,7 +1,7 @@
 {
-  "name": "element-starter",
+  "name": "UB的后台",
   "description": "A Vue.js project",
-  "author": "yi.shyang@ele.me",
+  "author": "lizhijie@qq.com",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js --display-modules --profile --progress --colors --display-error-details",
