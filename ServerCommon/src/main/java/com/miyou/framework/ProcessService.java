@@ -15,6 +15,11 @@ import javax.validation.ValidatorFactory;
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+* @Author: lizhijie
+* @Description: 服务调用接口
+* @Date: Created in 16:43 2018/5/25
+*/
 @Slf4j
 @Component
 public class ProcessService {
@@ -42,7 +47,7 @@ public class ProcessService {
             reqIn.setSession(request.getSession());
             reqIn.setRequestStr(reqInStr);
             HttpSession session = request.getSession();
-            if(session.getAttribute("userInfo")==null && !"login".equals(actionType)){
+            if(session.getAttribute("userInfo") == null){
                 throw new BusinessException(BusinessConstant.ERR_CODE.FATAL,"请求超时,请重新登录");
             }
             ArrayList<String> tokenes = (ArrayList<String>) session.getAttribute("tokenes");

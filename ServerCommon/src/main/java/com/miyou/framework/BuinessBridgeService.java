@@ -2,6 +2,11 @@ package com.miyou.framework;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+* @Author: lizhijie
+* @Description: 使用注解注册服务
+* @Date: Created in 16:44 2018/5/25
+*/
 @Slf4j
 public abstract class BuinessBridgeService extends BusinessService {
 

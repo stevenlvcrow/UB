@@ -5,8 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by zhuhongqing on 2018/5/9.
- */
+* @Author: lizhijie
+* @Description: 服务注册
+* @Date: Created in 16:42 2018/5/25
+*/
+@Slf4j
 public class ServiceRegistry {
     private static ConcurrentHashMap<String, BusinessService> registry = new ConcurrentHashMap<String, BusinessService>();
 
@@ -18,20 +21,20 @@ public class ServiceRegistry {
 
         BusinessService existingService = registry.get(key);
         if (existingService != null) {
-//            log.warn("服务{}跟已注册服务{}冲突，key={}。", service.getName(),
-//                    existingService.getName(), key);
+            log.warn("服务{}跟已注册服务{}冲突，key={}。", service.getName(),
+                    existingService.getName(), key);
         }
         registry.put(key, service);
 
-//        log.info("注册服务: {}, {}", key, service.getName());
+       log.info("注册服务: {}, {}", key, service.getName());
     }
 
-    public static BusinessService getService(String actionType)
+    static BusinessService getService(String actionType)
             throws BusinessException {
         if (actionType == null || actionType.length() == 0)
             throw new IllegalArgumentException("msgType cannot be null");
-        String key = null;
-        BusinessService service = null;
+        String key;
+        BusinessService service;
         key = actionType;
         service = registry.get(key);
 

@@ -7,8 +7,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by zhuhongqing on 2018/5/8.
- */
+* @Author: lizhijie
+* @Description: 请求体
+* @Date: Created in 16:44 2018/5/25
+*/
 @Data
 public class BusinessRequest {
 
