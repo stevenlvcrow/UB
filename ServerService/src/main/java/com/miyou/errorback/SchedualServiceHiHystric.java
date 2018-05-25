@@ -1,6 +1,6 @@
 package com.miyou.errorback;
 
-import com.miyou.service.SchedualServiceHi;
+import com.miyou.dbinterface.SchedualServiceHi;
 import org.springframework.stereotype.Component;
 
 @Component

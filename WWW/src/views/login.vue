@@ -19,6 +19,8 @@
     </section>
 </template>
 <script>
+    import {test} from "../api/test";
+
     export default {
         data() {
 
@@ -33,6 +35,9 @@
         },
         methods: {
             submitForm() {
+                test({id:123}).then(res=>{
+                   console.log()
+                });
                 sessionStorage.setItem('vuex','22222222');
                 this.$router.push('/main');
             },

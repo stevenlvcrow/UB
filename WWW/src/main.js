@@ -8,9 +8,10 @@ import App from './App.vue'
 import routes from './routes'
 import store from './common/vuex/index'
 
-Vue.use(ElementUI);
+Vue.use(ElementUI, { size: 'mini' });
 Vue.use(VueRouter);
 Vue.use(Vuex);
+
 
 const router = new VueRouter({
     routes

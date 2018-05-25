@@ -42,12 +42,12 @@ public class ProcessService {
             reqIn.setSession(request.getSession());
             reqIn.setRequestStr(reqInStr);
             HttpSession session = request.getSession();
-            if(session.getAttribute("userInfo")==null){
+            if(session.getAttribute("userInfo")==null && !"login".equals(actionType)){
                 throw new BusinessException(BusinessConstant.ERR_CODE.FATAL,"请求超时,请重新登录");
             }
             ArrayList<String> tokenes = (ArrayList<String>) session.getAttribute("tokenes");
             if(tokenes==null){
-                tokenes = new ArrayList<String>();
+                tokenes = new ArrayList<>();
             }
             //检验token是否重复
             if(tokenes.contains(token)){

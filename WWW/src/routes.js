@@ -16,6 +16,11 @@ let routes = [
             {path: '/statisindex', component: (resolve) => require(['./views/syset/view.vue'], resolve), name: '设置'},
             {path: '/main', component: (resolve) => require(['./views/main.vue'], resolve), name: '主页',hidden: true},
         ]
+    },
+    {
+        path: '*',
+        hidden: true,
+        redirect: {path: '/login'}
     }
 ];
 

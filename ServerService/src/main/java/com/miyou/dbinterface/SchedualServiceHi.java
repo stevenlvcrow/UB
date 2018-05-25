@@ -1,4 +1,4 @@
-package com.miyou.service;
+package com.miyou.dbinterface;
 
 import com.miyou.errorback.SchedualServiceHiHystric;
 import org.springframework.cloud.netflix.feign.FeignClient;
