@@ -23,7 +23,8 @@
 		<module>ServerDB</module>
 		<module>ServerRemote</module>
 		<module>ServerService</module>
-	</modules>
+        <module>ServerZuul</module>
+    </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
