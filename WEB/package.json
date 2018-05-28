@@ -8,13 +8,13 @@
     "build": "node build/build.js --profile --progress --colors --display-error-details"
   },
   "dependencies": {
+    "vue": "^2.5.16",
+    "element-ui": "^2.3.4",
     "axios": "^0.17.0",
     "crypto-js": "latest",
     "echarts": "^3.7.2",
-    "element-ui": "^2.3.4",
     "font-awesome": "^4.7.0",
     "jsencrypt": "^3.0.0-beta.1",
-    "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.0",
     "vuex-persistedstate": "^2.4.2"
