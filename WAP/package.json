@@ -1,7 +1,7 @@
 {
   "name": "vanttest",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "手机端的wap项目",
   "author": "stevenlvcrow@163.com <a13537578355>",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "vant": "^1.0.1",
     "vant-css": "^1.0.1",
     "vue": "^2.5.16",
-    "vue-router": "^3.0.0"
+    "vue-router": "^3.0.0",
     "axios": "^0.17.0",
     "crypto-js": "latest",
     "echarts": "^3.7.2",
