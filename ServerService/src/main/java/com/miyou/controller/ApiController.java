@@ -26,6 +26,7 @@ public class ApiController {
     @RequestMapping("/{actionType}")
     public BusinessResponse action(@RequestBody String reqInStr, @PathVariable("actionType") String actionType, HttpServletRequest request){
         log.info("收到请求报文：\r\n{}",  reqInStr);
+
         return processService.jsonProcess(actionType,reqInStr,request);
     }
 
