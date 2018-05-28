@@ -1,25 +1,18 @@
 <template>
   <div id="app">
-    <van-cell-group class="item-list">
-      <van-cell is-link icon="points" title="我的积分" />
-      <van-cell is-link icon="gift" title="我收到的礼物" />
-    </van-cell-group>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import { Cell, CellGroup, Icon } from 'vant';
-
-export default {
-  components: {
-    [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup,
-    [Icon.name]: Icon
+  export default {
+    name: 'app'
   }
-};
 </script>
 
-<style>
+<style  lang="scss">
 body {
   background-color: #f8f8f8;
 }
