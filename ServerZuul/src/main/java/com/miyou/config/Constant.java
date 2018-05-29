@@ -6,7 +6,7 @@ public class Constant {
 
     public static HttpHeaders JSONHEADER;
 
-    static {
+    Constant(){
         JSONHEADER.add("Content-Type", "application/json");
     }
 }
