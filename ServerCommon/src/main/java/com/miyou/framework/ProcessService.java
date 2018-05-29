@@ -1,6 +1,7 @@
 package com.miyou.framework;
 
 import com.alibaba.fastjson.JSON;
+import com.miyou.constant.BusinessConstant;
 import com.miyou.domain.BusinessContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

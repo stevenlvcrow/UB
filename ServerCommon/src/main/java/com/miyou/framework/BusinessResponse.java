@@ -1,5 +1,6 @@
 package com.miyou.framework;
 
+import com.miyou.constant.BusinessConstant;
 import lombok.Data;
 
 @Data

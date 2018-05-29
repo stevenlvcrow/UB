@@ -1,6 +1,6 @@
 package com.miyou;
 
-import com.miyou.framework.BusinessConstant;
+import com.miyou.constant.BusinessConstant;
 import com.miyou.framework.BusinessResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

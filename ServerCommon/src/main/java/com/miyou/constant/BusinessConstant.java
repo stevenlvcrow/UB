@@ -1,4 +1,4 @@
-package com.miyou.framework;
+package com.miyou.constant;
 
 import java.nio.charset.Charset;
 
