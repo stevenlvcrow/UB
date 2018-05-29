@@ -5,7 +5,7 @@
             <div class="login">
                 <div class="login_logo"><a href="#"><img src="../assets/login_logo.png"/></a></div>
                 <div class="login_name">
-                    <p>后台管理系统</p>
+                    <p>商户平台</p>
                 </div>
                 <el-form :model="user" :rules="rules" ref="ruleForm" label-width="80px">
                     <el-form-item label="用户名" prop="userName">
