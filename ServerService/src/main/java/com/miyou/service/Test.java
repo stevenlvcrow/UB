@@ -1,6 +1,6 @@
 package com.miyou.service;
 
-import com.miyou.dbinterface.SchedualServiceHi;
+import com.miyou.service.db.SchedualServiceHi;
 import com.miyou.domain.BusinessContext;
 import com.miyou.framework.*;
 import lombok.extern.slf4j.Slf4j;

@@ -4,9 +4,10 @@ package com.miyou.controller;
 import com.alibaba.fastjson.JSON;
 import com.miyou.bean.LoginInfo;
 import com.miyou.bean.TestVo;
-import com.miyou.framework.BusinessRequest;
 import com.miyou.framework.BusinessResponse;
 import com.miyou.framework.ProcessService;
+import com.miyou.service.db.SchedualServiceHi;
+import com.miyou.service.redis.CusRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -24,6 +25,14 @@ public class ApiController {
 
     @Autowired
     ProcessService processService;
+
+    @Autowired
+    SchedualServiceHi schedualServiceHi;
+
+
+    @Autowired
+    CusRedisService redisService;
+
 
     @ResponseBody
     @RequestMapping("/{actionType}")
@@ -48,9 +57,15 @@ public class ApiController {
 
     @ResponseBody
     @RequestMapping("/test")
-    public BusinessResponse test(@RequestBody String reqInStr){
-        TestVo reqIn = JSON.parseObject(reqInStr, TestVo.class);
-        log.info(reqIn.toString());
+    public BusinessResponse test(@RequestBody String reqInStr, HttpSession session){
+        session.setAttribute("test","ppppp");
+        System.out.println(session.getAttribute("test"));
+        TestVo testVo = JSON.parseObject(reqInStr, TestVo.class);
+        schedualServiceHi.sayHiFromClientOne(testVo.getId());
+        log.info(testVo.toString());
+        redisService.setObj("ke",reqInStr);
+        log.info((String) redisService.getObj("ke"));
         return new BusinessResponse();
     }
+
 }
