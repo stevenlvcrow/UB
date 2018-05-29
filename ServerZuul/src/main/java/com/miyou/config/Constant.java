@@ -4,9 +4,9 @@ import org.springframework.http.HttpHeaders;
 
 public class Constant {
 
-    public static HttpHeaders JSONhEADER;
+    public static HttpHeaders JSONHEADER;
 
     static {
-        JSONhEADER.add("Content-Type", "application/json");
+        JSONHEADER.add("Content-Type", "application/json");
     }
 }

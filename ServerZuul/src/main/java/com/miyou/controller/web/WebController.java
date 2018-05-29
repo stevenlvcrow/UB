@@ -22,6 +22,6 @@ public class WebController {
     @ApiImplicitParam(name = "postParameters", value = "没有参数", required = false, dataType = "String")
     @PostMapping("/test")
     public Object home(@RequestBody String postParameters) {
-        return restTemplate.postForObject("http://service/www/api/test",new HttpEntity(postParameters, Constant.JSONhEADER),String.class);
+        return restTemplate.postForObject("http://service/www/api/test",new HttpEntity(postParameters, Constant.JSONHEADER),String.class);
     }
 }
