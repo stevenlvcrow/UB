@@ -1,4 +1,4 @@
-package com.miyou.filter;
+package com.miyou.config;
 
 import com.netflix.zuul.ZuulFilter;
 import org.slf4j.Logger;

@@ -11,7 +11,7 @@ zuul:
   routes:
     api-a:
       path: /api-b/**
-      url: forward:/b
+      url: forward:/api-b
     api-b:
       path: /api-c/**
       url: forward:/c

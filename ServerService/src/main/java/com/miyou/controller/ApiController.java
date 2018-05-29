@@ -1,7 +1,10 @@
 package com.miyou.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.miyou.bean.LoginInfo;
+import com.miyou.bean.TestVo;
+import com.miyou.framework.BusinessRequest;
 import com.miyou.framework.BusinessResponse;
 import com.miyou.framework.ProcessService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +29,6 @@ public class ApiController {
     @RequestMapping("/{actionType}")
     public BusinessResponse action(@RequestBody String reqInStr, @PathVariable("actionType") String actionType, HttpServletRequest request){
         log.info("收到请求报文：\r\n{}",  reqInStr);
-
         return processService.jsonProcess(actionType,reqInStr,request);
     }
 
@@ -41,6 +43,14 @@ public class ApiController {
     @RequestMapping("/loginOut")
     public BusinessResponse loginOut(HttpSession httpSession){
         httpSession.invalidate();
+        return new BusinessResponse();
+    }
+
+    @ResponseBody
+    @RequestMapping("/test")
+    public BusinessResponse test(@RequestBody String reqInStr){
+        TestVo reqIn = JSON.parseObject(reqInStr, TestVo.class);
+        log.info(reqIn.toString());
         return new BusinessResponse();
     }
 }
