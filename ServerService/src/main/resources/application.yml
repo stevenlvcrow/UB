@@ -33,5 +33,5 @@ spring:
 #################redis哨兵设置#################
 #    sentinel:
 #      master: master8026
-#      redis-sentinel的配置地址和端口
+#      cache-sentinel的配置地址和端口
 #      nodes: 10.189.80.25:26379,10.189.80.26:26379,10.189.80.27:26378
