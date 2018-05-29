@@ -2,6 +2,7 @@ package com.miyou.service.cache;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class TestCache {
+
+    @CachePut(cacheNames = "user_cache", key = "#id")
+    public String save(String id) {
+        log.info("findById.id = " + id);
+        return "更新了缓存";
+    }
 
     @Cacheable(cacheNames = "user_cache", key = "#id")
     public String findById(String id) {

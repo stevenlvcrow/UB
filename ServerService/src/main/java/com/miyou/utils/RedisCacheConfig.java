@@ -27,8 +27,8 @@ public class RedisCacheConfig {
     @Bean
     public CacheManager RedisCacheConfig(RedisTemplate redisTemplate) {
         RedisCacheManager redisCacheManager = new RedisCacheManager(redisTemplate);
-        //缓存时间为300s
-        redisCacheManager.setDefaultExpiration(300);
+        //缓存时间为一直有效
+        redisCacheManager.setDefaultExpiration(0);
         return redisCacheManager;
     }
 
