@@ -8,4 +8,6 @@ import lombok.ToString;
 public class TestVo {
 
     private String id;
+
+    private String name;
 }

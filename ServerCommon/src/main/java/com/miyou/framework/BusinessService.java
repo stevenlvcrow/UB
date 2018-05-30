@@ -1,6 +1,8 @@
 package com.miyou.framework;
 
 import com.miyou.domain.BusinessContext;
+import com.miyou.domain.BusinessRequest;
+import com.miyou.domain.BusinessResponse;
 import lombok.Getter;
 import lombok.Setter;
 

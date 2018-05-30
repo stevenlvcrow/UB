@@ -1,14 +1,13 @@
 package com.miyou.controller;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.miyou.domain.PaddingParam;
 import com.miyou.repository.CustomerRepository;
 import com.miyou.tableVo.UbTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -20,10 +19,10 @@ public class MerchantController {
 
     @ResponseBody
     @PostMapping("/listPadding")
-    public Page<UbTest> listPadding(){
-
-        Pageable pageable = new PageRequest(0,3, Sort.Direction.DESC,"id");
-        Example<UbTest> example = Example.of(new UbTest());
+    public Page<UbTest> listPadding(@RequestBody PaddingParam paddingParam){
+        Pageable pageable = new PageRequest(paddingParam.getPage(),paddingParam.getSize(), Sort.Direction.DESC,paddingParam.getSort());
+        UbTest ubTest =  new ObjectMapper().convertValue(paddingParam.getTableBean(),UbTest.class);
+        Example<UbTest> example = Example.of(ubTest);
         return customerRepository.findAll(example,pageable);
     }
 }

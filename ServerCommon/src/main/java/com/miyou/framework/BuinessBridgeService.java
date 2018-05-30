@@ -1,5 +1,7 @@
 package com.miyou.framework;
 
+import com.miyou.domain.BusinessRequest;
+import com.miyou.domain.BusinessResponse;
 import lombok.extern.slf4j.Slf4j;
 
 /**

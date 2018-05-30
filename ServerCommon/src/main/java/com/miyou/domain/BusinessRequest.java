@@ -1,4 +1,4 @@
-package com.miyou.framework;
+package com.miyou.domain;
 
 
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.miyou;
 
 import com.miyou.constant.BusinessConstant;
-import com.miyou.framework.BusinessResponse;
+import com.miyou.domain.BusinessResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

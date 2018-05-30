@@ -3,6 +3,8 @@ package com.miyou.framework;
 import com.alibaba.fastjson.JSON;
 import com.miyou.constant.BusinessConstant;
 import com.miyou.domain.BusinessContext;
+import com.miyou.domain.BusinessRequest;
+import com.miyou.domain.BusinessResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -32,7 +34,7 @@ public class ProcessService {
         validator = factory.getValidator();
     }
 
-    public BusinessResponse jsonProcess(String actionType,String reqInStr, HttpServletRequest request) {
+    public BusinessResponse jsonProcess(String actionType, String reqInStr, HttpServletRequest request) {
         BusinessResponse businessResponse;
         BusinessContext context = new BusinessContext();
         try {

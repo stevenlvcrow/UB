@@ -1,7 +1,5 @@
 package com.miyou.domain;
 
-import com.miyou.framework.BusinessRequest;
-import com.miyou.framework.BusinessResponse;
 import lombok.Data;
 
 import java.util.HashMap;

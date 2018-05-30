@@ -21,11 +21,11 @@ public class RSAUtil {
     private static final String PRIVATE_KEY = "RSAPrivateKey";
 
     public static byte[] decryptBASE64(String key) {
-        return Base64Util.decode(key);
+        return Base64Utils.decode(key);
     }
 
     public static String encryptBASE64(byte[] bytes) {
-        return new String(Base64Util.encode(bytes));
+        return new String(Base64Utils.encode(bytes));
     }
 
     /**
@@ -157,8 +157,8 @@ public class RSAUtil {
         return cipher.doFinal(data.getBytes());
     }
 
-    public static byte[] encryptByPublicKeyString(String data, String key) throws Exception {
-        return Base64Util.encode(encryptByPublicKey(data,key));
+    public static String encryptByPublicKeyString(String data, String key) throws Exception {
+        return Base64Utils.encode(encryptByPublicKey(data,key));
     }
 
     /**
@@ -212,10 +212,10 @@ public class RSAUtil {
      * @return
      * @throws Exception
      */
-    public static byte[] getPrivateKey(Map<String, Object> keyMap)
+    public static String getPrivateKey(Map<String, Object> keyMap)
             throws Exception {
         Key key = (Key) keyMap.get(PRIVATE_KEY);
-        return Base64Util.encode(key.getEncoded());
+        return Base64Utils.encode(key.getEncoded());
     }
 
     /** *//**
@@ -247,10 +247,10 @@ public class RSAUtil {
      * @return
      * @throws Exception
      */
-    public static byte[] getPublicKey(Map<String, Object> keyMap)
+    public static String getPublicKey(Map<String, Object> keyMap)
             throws Exception {
         Key key = (Key) keyMap.get(PUBLIC_KEY);
-        return Base64Util.encode(key.getEncoded());
+        return Base64Utils.encode(key.getEncoded());
     }
 
 
@@ -264,7 +264,7 @@ public class RSAUtil {
         byte[] encodedData = RSAUtil.encryptByPrivateKey(data, privateKey);
         System.out.println(RSAUtil.encryptByPublicKeyString(inputStr,publicKey));
 //        byte[] decodedData = RSAUtil
-//                .decryptByPrivateKey(Base64Util.decode("lqDXYUAymSNFK1KmZJkGXw2pUoE/NO+huKIPxp6CU2/xteB6SDnwWqYIfota3hTCHfyiuM2qH7qzYoOwFZLNN3W0PmU4uJtcBCcOtzwIigUIAzv/fjpl22FInezh9aZJYgO2NgQDeMJI12XDVYYoHpMrhrMkgpnihlLrtOuv7pY="),
+//                .decryptByPrivateKey(Base64Utils.decode("lqDXYUAymSNFK1KmZJkGXw2pUoE/NO+huKIPxp6CU2/xteB6SDnwWqYIfota3hTCHfyiuM2qH7qzYoOwFZLNN3W0PmU4uJtcBCcOtzwIigUIAzv/fjpl22FInezh9aZJYgO2NgQDeMJI12XDVYYoHpMrhrMkgpnihlLrtOuv7pY="),
 //                        privateKey);
 //        String outputStr = new String(decodedData);
 //        System.err.println("加密前: " + inputStr + "\n\r" + "解密后: " + outputStr);

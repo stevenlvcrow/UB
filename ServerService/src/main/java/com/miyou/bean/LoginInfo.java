@@ -1,6 +1,6 @@
 package com.miyou.bean;
 
-import com.miyou.framework.BusinessResponse;
+import com.miyou.domain.BusinessResponse;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
