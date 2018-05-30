@@ -2,6 +2,7 @@ package com.miyou.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.miyou.bean.LoginInfo;
 import com.miyou.bean.TestVo;
 import com.miyou.domain.BusinessResponse;
@@ -9,8 +10,10 @@ import com.miyou.domain.PaddingParam;
 import com.miyou.framework.ProcessService;
 import com.miyou.service.cache.TestCache;
 import com.miyou.service.db.SchedualServiceHi;
+import com.miyou.tableVo.UbTest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,14 +67,13 @@ public class ApiController {
         log.info(""+session.getAttribute("test"));
         TestVo testVo = JSON.parseObject(reqInStr, TestVo.class);
 
-
         PaddingParam req = new PaddingParam();
         req.setPage(1);
         req.setSize(5);
         req.setSort("name");
         req.setTableBean(testVo);
-        LinkedHashMap obj = (LinkedHashMap) schedualServiceHi.merchantListPadding(req);
 
+        Object obj =  schedualServiceHi.merchantListPadding(req);
 
         testCache.findById("a");
         return new BusinessResponse(obj);

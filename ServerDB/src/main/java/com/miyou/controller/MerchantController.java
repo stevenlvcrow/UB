@@ -25,4 +25,9 @@ public class MerchantController {
         Example<UbTest> example = Example.of(ubTest);
         return customerRepository.findAll(example,pageable);
     }
+
+
+    public Integer addOrUpdateMerchant(){
+        return 1;
+    }
 }
