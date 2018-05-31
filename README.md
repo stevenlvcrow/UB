@@ -1,6 +1,8 @@
 # UB
 spring-could + vue + elementUi
 
+https://github.com/stevenlvcrow/UB
+
 # 准备工作:  
    1: cd {classPath}/WWW  
    2: npm install  
