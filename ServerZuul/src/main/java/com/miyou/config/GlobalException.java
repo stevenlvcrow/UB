@@ -37,6 +37,15 @@ public class GlobalException {
         return timeOutRefund();
     }
 
+    @ExceptionHandler(IllegalStateException.class)
+    public Object illegalStateExceptionException(Exception e) {
+        log.error("{}" , e);
+        BusinessResponse errorRes = new BusinessResponse();
+        errorRes.setErrCode(BusinessConstant.ERR_CODE.FATAL);
+        errorRes.setErrInfo("系统内部错误");
+        return errorRes;
+    }
+
     private BusinessResponse timeOutRefund(){
         BusinessResponse errorRes = new BusinessResponse();
         errorRes.setErrCode(BusinessConstant.ERR_CODE.FATAL);

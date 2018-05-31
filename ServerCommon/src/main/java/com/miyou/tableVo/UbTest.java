@@ -1,8 +1,6 @@
 package com.miyou.tableVo;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,7 +13,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 @ToString
-public class UbTest {
+public class UbTest implements java.io.Serializable{
 
     @Id
     @GeneratedValue
@@ -24,10 +22,4 @@ public class UbTest {
     @Column(name = "name", nullable = true, length = 20)
     String name;
 
-
-    @JsonCreator
-    public UbTest(@JsonProperty("id") String id, @JsonProperty("name") String name) {
-        this.id = id;
-        this.name = name;
-    }
 }
