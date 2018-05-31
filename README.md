@@ -11,6 +11,9 @@ spring-could + vue + elementUi
        run ServerCenter
        run ServerDB
        run ServerService  
+       run ServerZuul
+       
+       访问 ： http://localhost:8769/swagger-ui.html#/
    ## 前端:  
        cd {classPath}/WWW  
        运行: npm run dev  
