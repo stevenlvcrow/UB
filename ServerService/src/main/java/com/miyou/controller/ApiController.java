@@ -73,10 +73,11 @@ public class ApiController {
         req.setSort("name");
         req.setTableBean(testVo);
 
+        // 这里无法用Page对象接收，只能使用 LinkedHashMap 接收
         Object obj =  schedualServiceHi.merchantListPadding(req);
-
+        LinkedHashMap pageResult = (LinkedHashMap) obj;
         testCache.findById("a");
-        return new BusinessResponse(obj);
+        return new BusinessResponse(pageResult);
     }
 
 }
