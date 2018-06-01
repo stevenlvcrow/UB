@@ -41,7 +41,7 @@ public class ProcessService {
             BusinessService service = ServiceRegistry.getService(actionType);
             log.info("-------> {}", service.getName());
             BusinessRequest reqIn = JSON.parseObject(reqInStr, service.getBusinessRequest().getClass());
-            String token = request.getHeader("token");
+         /*   String token = request.getHeader("token");
             if(StringUtils.isEmpty(token) && !actionType.equals("login")){
                 throw new BusinessException(BusinessConstant.ERR_CODE.FATAL,"非法请求");
             }
@@ -60,7 +60,7 @@ public class ProcessService {
             //检验token是否重复
             if(tokenes.contains(token)){
                 throw new BusinessException(BusinessConstant.ERR_CODE.FATAL, "重复的请求: ");
-            }
+            }*/
             // 检查输入值是否合法
             Set violations = validator.validate(reqIn);
             if (violations.size() > 0) {
@@ -84,8 +84,8 @@ public class ProcessService {
             // resInStr = JSON.toJSONString(context.getBusinessResponse());
             businessResponse = context.getBusinessResponse();
 
-            tokenes.add(token);
-            session.setAttribute("tokenes",tokenes);
+            /*tokenes.add(token);
+            session.setAttribute("tokenes",tokenes);*/
         } catch (Throwable e) {
             log.error("", e);
             String resultCode = BusinessConstant.ERR_CODE.FATAL;

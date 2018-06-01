@@ -16,11 +16,11 @@ public class BusinessRequest {
 
     private HttpSession session;
 
-    @NotEmpty(message="签名不能为空")
+//    @NotEmpty(message="签名不能为空")
     private String token;
 
     private String requestStr;
 
-    @NotEmpty(message="私钥不能为空")
+//    @NotEmpty(message="私钥不能为空")
     private String privateKey;
 }

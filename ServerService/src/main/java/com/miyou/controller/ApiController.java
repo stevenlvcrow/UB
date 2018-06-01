@@ -2,13 +2,12 @@ package com.miyou.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.miyou.bean.LoginInfo;
+import com.miyou.bean.LoginInfoReqAndRes;
 import com.miyou.bean.TestVo;
 import com.miyou.domain.BusinessResponse;
 import com.miyou.domain.PaddingParam;
 import com.miyou.framework.ProcessService;
 import com.miyou.service.cache.TestCache;
-import com.miyou.service.db.SchedualServiceHi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -29,10 +28,6 @@ public class ApiController {
     ProcessService processService;
 
     @Autowired
-    SchedualServiceHi schedualServiceHi;
-
-
-    @Autowired
     TestCache testCache;
 
 
@@ -45,7 +40,7 @@ public class ApiController {
 
     @ResponseBody
     @RequestMapping("/login")
-    public BusinessResponse login(@Validated @RequestBody  LoginInfo reqInStr){
+    public BusinessResponse login(@Validated @RequestBody LoginInfoReqAndRes reqInStr){
         reqInStr.setLoginResponse("登录成功");
         return reqInStr;
     }
@@ -71,10 +66,10 @@ public class ApiController {
         req.setTableBean(testVo);
 
         // 这里无法用Page对象接收，只能使用 LinkedHashMap 接收
-        Object obj =  schedualServiceHi.merchantListPadding(req);
-        LinkedHashMap pageResult = (LinkedHashMap) obj;
+       // Object obj =  schedualServiceHi.merchantListPadding(req);
+    //    LinkedHashMap pageResult = (LinkedHashMap) obj;
         testCache.findById("a");
-        return new BusinessResponse(pageResult);
+        return new BusinessResponse();
     }
 
 }

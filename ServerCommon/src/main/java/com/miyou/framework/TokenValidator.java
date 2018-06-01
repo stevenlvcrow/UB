@@ -1,6 +1,6 @@
 package com.miyou.framework;
 
-import com.miyou.utils.Base64Util;
+import com.miyou.utils.Base64Utils;
 import com.miyou.utils.RSAUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
@@ -37,7 +37,7 @@ public class TokenValidator  implements ConstraintValidator<TokenVerify, Object>
             String encdeStr = Hex.encodeHexString(hash);
 
             // 对token进行解密
-            byte[] decodedData = RSAUtil.decryptByPrivateKey(Base64Util.decode(tokenStr),privateKey);
+            byte[] decodedData = RSAUtil.decryptByPrivateKey(Base64Utils.decode(tokenStr),privateKey);
             String deTxt = new String(decodedData);
             deTxt = deTxt.replaceAll("#asso#","");
             if(!deTxt.equals(encdeStr)){

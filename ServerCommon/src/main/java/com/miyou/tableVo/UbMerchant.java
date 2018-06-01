@@ -3,6 +3,7 @@ package com.miyou.tableVo;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,16 +12,18 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class UbMerchant {
+public class UbMerchant  implements java.io.Serializable{
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
     private String id;
 
+    @NotEmpty(message = "姓名不能为空")
     @Column(name = "name", length = 20)
     private String name;
 
+    @NotEmpty(message = "联系方式不能为空")
     @Column(name = "tel", length = 20)
     private String tel;
 
