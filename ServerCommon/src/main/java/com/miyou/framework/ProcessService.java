@@ -7,15 +7,12 @@ import com.miyou.domain.BusinessRequest;
 import com.miyou.domain.BusinessResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.ArrayList;
 import java.util.Set;
 
 /**
