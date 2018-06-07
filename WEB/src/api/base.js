@@ -4,7 +4,7 @@ import sha256 from 'crypto-js/sha256';
 import store from '../common/vuex/index'
 import { Message } from 'element-ui';
 
-let base  = process.env.NODE_ENV === 'development' ? 'http://localhost:8765/www/api/' : 'assoportal/api/';
+let base  = process.env.NODE_ENV === 'development' ? 'http://localhost:8769' : '';
 
 // 请求时的拦截
 axios.interceptors.request.use(function (config) {
@@ -30,7 +30,8 @@ axios.interceptors.response.use((response) => {
     if(data.errCode!=='0000'){
         throw data.errInfo;
     }
-    return response;
+
+    return data.responseData;
 }, error => {
     Message.error({
         message: '加载失败'

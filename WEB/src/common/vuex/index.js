@@ -3,12 +3,13 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 import createPersistedState from 'vuex-persistedstate'
 
+import userInfo from './modules/userInfo.js'
 
 
 const store = new Vuex.Store({
     plugins: [createPersistedState({ storage: window.sessionStorage })],
     modules: {
-
+        userInfo:userInfo,
     }
 });
 

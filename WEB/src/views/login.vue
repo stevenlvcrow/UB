@@ -17,18 +17,24 @@
                     <el-form-item>
                         <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
                         <el-button @click="resetForm('ruleForm')">重置</el-button>
+                        <el-button type="text" @click="$store.state.userInfo.showRegisterDialog=true">注册商户</el-button>
                     </el-form-item>
-
                 </el-form>
             </div>
             <div class="copyright">某某有限公司 版权所有©2016-2018 技术支持电话：000-00000000</div>
         </div>
+        <register-dialog></register-dialog>
     </section>
 </template>
 <script>
     import {login} from "../api/user";
+    import ElFormItem from "element-ui/packages/form/src/form-item";
+    import RegisterDialog from "./register";
 
     export default {
+        components: {
+            RegisterDialog,
+            ElFormItem},
         data() {
 
             return {
