@@ -14,10 +14,18 @@ import javax.persistence.Id;
 @Data
 public class UbMerchant  implements java.io.Serializable{
 
+    private String id;
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
-    private String id;
+    public String getId() {
+        return id;
+    }
 
     @NotEmpty(message = "姓名不能为空")
     @Column(name = "name", length = 20)

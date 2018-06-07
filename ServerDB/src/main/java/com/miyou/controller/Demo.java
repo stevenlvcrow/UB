@@ -16,6 +16,8 @@ public class Demo {
     @Autowired
     CustomerRepository customerRepository;
 
+    public static final String  s = "123";
+
     @Value("${server.port}")
     private String port;
 

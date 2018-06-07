@@ -1,6 +1,7 @@
 package com.miyou.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.miyou.domain.PaddingParam;
 import com.miyou.repository.MerchantRepository;
@@ -37,7 +38,6 @@ public class MerchantController {
         }else{
             page = merchantRepository.findAll(pageable);
         }
-        log.info(page.toString());
         return page;
     }
 

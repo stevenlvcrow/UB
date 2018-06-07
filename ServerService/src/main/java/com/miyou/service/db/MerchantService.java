@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.LinkedHashMap;
+
 @Service
 @FeignClient(value = "service-db")
 public interface MerchantService {
 
     @RequestMapping(value = "/merchant/listPadding",method = RequestMethod.POST)
-    Page merchantListPadding(@RequestBody PaddingParam paddingParam);
+    LinkedHashMap merchantListPadding(@RequestBody PaddingParam paddingParam);
 
     @RequestMapping(value = "/merchant/saveAndFlush",method = RequestMethod.POST)
     Integer merchantSaveAndFlush(@RequestBody UbMerchant ubMerchant);
