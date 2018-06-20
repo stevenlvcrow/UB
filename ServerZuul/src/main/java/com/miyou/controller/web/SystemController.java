@@ -1,5 +1,6 @@
 package com.miyou.controller.web;
 
+
 import com.miyou.config.Constant;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -11,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/merchant")
-public class MerchantController extends WebController{
+@RequestMapping("/sys")
+public class SystemController extends WebController {
+
+
 
     @ResponseBody
-    @ApiOperation(value="商户列表查询", notes="返回商户列表集合")
-    @ApiImplicitParam(name = "postParameters", value = "{size:1, page:0}", required = true, dataType = "PaddingParam")
-    @PostMapping("/list")
+    @ApiOperation(value="登录接口", notes="返回登录人信息")
+    @ApiImplicitParam(name = "postParameters", value = "{userName:'', pwd:''}", required = true, dataType = "LoginRequest")
+    @PostMapping("/login")
     public Object home(@RequestBody String postParameters) {
-        return restTemplate.postForObject(Constant.SERVICEUTL+"/merchantList",new HttpEntity(postParameters, Constant.JSON_HEADER),String.class);
+        return restTemplate.postForObject(Constant.SERVICEUTL+"/login",new HttpEntity(postParameters, Constant.JSON_HEADER),String.class);
     }
 }

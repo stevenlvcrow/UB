@@ -1,11 +1,10 @@
 package com.miyou.bean;
 
-import com.miyou.domain.BusinessResponse;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Data
-public class LoginInfoReqAndRes extends BusinessResponse {
+public class LoginRequest {
 
     @NotEmpty(message = "用户名不能为空")
     private String userName;

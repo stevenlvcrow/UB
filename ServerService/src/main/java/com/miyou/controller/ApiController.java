@@ -2,13 +2,14 @@ package com.miyou.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.miyou.bean.LoginInfoReqAndRes;
+import com.miyou.bean.LoginRequest;
+import com.miyou.bean.LoginResponse;
 import com.miyou.bean.TestVo;
-import com.miyou.domain.BusinessRequest;
 import com.miyou.domain.BusinessResponse;
 import com.miyou.domain.PaddingParam;
 import com.miyou.framework.ProcessService;
 import com.miyou.service.cache.TestCache;
+import com.miyou.utils.RSAUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -41,10 +42,20 @@ public class ApiController {
 
     @ResponseBody
     @RequestMapping("/login")
-    public LoginInfoReqAndRes login(@Validated @RequestBody String reqInStr){
-        LoginInfoReqAndRes reqIn = JSON.parseObject(reqInStr, LoginInfoReqAndRes.class);
-        reqIn.setResponseData("登录成功");
-        return reqIn;
+    public BusinessResponse login(@Validated @RequestBody String reqInStr, HttpSession session) throws Exception {
+        LoginRequest reqIn = JSON.parseObject(reqInStr, LoginRequest.class);
+
+        BusinessResponse businessResponse = new BusinessResponse();
+        Map<String, Object> keyMap = RSAUtil.genKeyPair();
+        String publicKey = RSAUtil.getPublicKey(keyMap);
+        //String privateKey = RSAUtil.getPrivateKey(keyMap);
+        session.setAttribute("keyPair",keyMap);
+
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setPublicKey(publicKey);
+        businessResponse.setResponseData(loginResponse);
+        //reqIn.setResponseData("登录成功");
+        return businessResponse;
     }
 
     @ResponseBody

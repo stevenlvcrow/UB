@@ -7,12 +7,15 @@ import com.miyou.domain.BusinessRequest;
 import com.miyou.domain.BusinessResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -38,8 +41,8 @@ public class ProcessService {
             BusinessService service = ServiceRegistry.getService(actionType);
             log.info("-------> {}", service.getName());
             BusinessRequest reqIn = JSON.parseObject(reqInStr, service.getBusinessRequest().getClass());
-         /*   String token = request.getHeader("token");
-            if(StringUtils.isEmpty(token) && !actionType.equals("login")){
+            String token = request.getHeader("token");
+            if(StringUtils.isEmpty(token)){
                 throw new BusinessException(BusinessConstant.ERR_CODE.FATAL,"非法请求");
             }
             reqIn.setToken(token);
@@ -57,7 +60,7 @@ public class ProcessService {
             //检验token是否重复
             if(tokenes.contains(token)){
                 throw new BusinessException(BusinessConstant.ERR_CODE.FATAL, "重复的请求: ");
-            }*/
+            }
             // 检查输入值是否合法
             Set violations = validator.validate(reqIn);
             if (violations.size() > 0) {
