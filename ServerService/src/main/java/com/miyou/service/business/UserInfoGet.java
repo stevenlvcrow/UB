@@ -25,9 +25,7 @@ public class UserInfoGet extends BuinessBridgeService {
         JustIdRequest justIdRequest = (JustIdRequest) context.getBusinessRequest();
         UbUser ubUser = new UbUser();
         ubUser.setId(justIdRequest.getId());
-        ubUser = userInfoService.getUserInfo(ubUser);
-        BusinessResponse businessResponse = new BusinessResponse();
-        businessResponse.setResponseData(ubUser);
+        BusinessResponse businessResponse = userInfoService.getUserInfo(ubUser);
         context.setBusinessResponse(businessResponse);
     }
 }

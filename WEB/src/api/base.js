@@ -33,6 +33,7 @@ axios.interceptors.response.use((response) => {
 
     return data.responseData;
 }, error => {
+    console.log('12123')
     Message.error({
         message: '加载失败'
     });

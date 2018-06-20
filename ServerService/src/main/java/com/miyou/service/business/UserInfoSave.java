@@ -23,7 +23,7 @@ public class UserInfoSave extends BuinessBridgeService {
     @Override
     public void process(BusinessContext context) throws BusinessException, IllegalArgumentException {
         UserSaveRequest userSaveRequest = (UserSaveRequest) context.getBusinessRequest();
-        userInfoService.userSaveAndFlush(userSaveRequest.getUbUser());
-        context.setBusinessResponse(new BusinessResponse());
+        BusinessResponse businessResponse = userInfoService.userSaveAndFlush(userSaveRequest.getUbUser());
+        context.setBusinessResponse(businessResponse);
     }
 }

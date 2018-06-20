@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,6 +37,6 @@ public class UbMenu implements java.io.Serializable{
     @Column(name = "iconCls", length = 20)
     private String iconCls;
 
-    private UbMenu children;
+    private List<UbMenu> children;
 
 }

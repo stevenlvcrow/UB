@@ -1,5 +1,6 @@
 package com.miyou.service.db;
 
+import com.miyou.domain.BusinessResponse;
 import com.miyou.tableVo.UbUser;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface UserInfoService {
 
     @RequestMapping(value = "/userInfo/saveAndFlush",method = RequestMethod.POST)
-    Integer userSaveAndFlush(@RequestBody UbUser ubUser);
+    BusinessResponse userSaveAndFlush(@RequestBody UbUser ubUser);
 
     @RequestMapping(value = "/userInfo/getUserInfo",method = RequestMethod.POST)
-    UbUser getUserInfo(@RequestBody UbUser ubUser);
+    BusinessResponse getUserInfo(@RequestBody UbUser ubUser);
 }
