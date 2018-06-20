@@ -23,11 +23,11 @@ public class MerchantSave extends BuinessBridgeService {
     @Override
     public void process(BusinessContext context) throws BusinessException, IllegalArgumentException {
         MerchantSaveRequest merchantSaveRequest = (MerchantSaveRequest) context.getBusinessRequest();
-        Integer result = merchantService.merchantSaveAndFlush(merchantSaveRequest.getUbMerchant());
-        if(result!=1){
+        BusinessResponse result = merchantService.merchantSaveAndFlush(merchantSaveRequest.getUbMerchant());
+        if(result.isFaild()){
             throw new BusinessException(BusinessConstant.ERR_CODE.FATAL, "更新数据失败.请重试");
         }
-        context.setBusinessResponse(new BusinessResponse());
+        context.setBusinessResponse(result);
 
     }
 }

@@ -1,8 +1,8 @@
 package com.miyou.controller;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.miyou.domain.BusinessResponse;
 import com.miyou.domain.PaddingParam;
 import com.miyou.repository.MerchantRepository;
 import com.miyou.tableVo.UbMerchant;
@@ -25,7 +25,7 @@ public class MerchantController {
 
     @ResponseBody
     @PostMapping("/listPadding")
-    public Page<UbMerchant> listPadding(@RequestBody PaddingParam paddingParam) {
+    public BusinessResponse listPadding(@RequestBody PaddingParam paddingParam) {
         Pageable pageable = new PageRequest(paddingParam.getPage(), paddingParam.getSize(), Sort.Direction.DESC, paddingParam.getSort());
         //Pageable pageable = new PageRequest(paddingParam.getPage(), paddingParam.getSize());
         Object tableBean = paddingParam.getTableBean();
@@ -38,20 +38,20 @@ public class MerchantController {
         }else{
             page = merchantRepository.findAll(pageable);
         }
-        return page;
+        return new BusinessResponse(page);
     }
 
 
     @ResponseBody
     @PostMapping("/saveAndFlush")
-    public Integer saveAndFlush(@RequestBody UbMerchant ubMerchant) {
+    public BusinessResponse saveAndFlush(@RequestBody UbMerchant ubMerchant) {
         merchantRepository.saveAndFlush(ubMerchant);
-        return 1;
+        return new BusinessResponse();
     }
 
     @ResponseBody
     @PostMapping("/del")
-    public Integer del(@RequestBody String ids[]) {
+    public BusinessResponse del(@RequestBody String ids[]) {
         List<UbMerchant> ubMerchantList = new ArrayList<>();
         for (String id : ids) {
             UbMerchant ubMerchant = new UbMerchant();
@@ -61,6 +61,6 @@ public class MerchantController {
             ubMerchantList.add(ubMerchant);
         }
         merchantRepository.deleteInBatch(ubMerchantList);
-        return 1;
+        return new BusinessResponse();
     }
 }

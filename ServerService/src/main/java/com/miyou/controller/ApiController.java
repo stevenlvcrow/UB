@@ -4,6 +4,7 @@ package com.miyou.controller;
 import com.alibaba.fastjson.JSON;
 import com.miyou.bean.LoginInfoReqAndRes;
 import com.miyou.bean.TestVo;
+import com.miyou.domain.BusinessRequest;
 import com.miyou.domain.BusinessResponse;
 import com.miyou.domain.PaddingParam;
 import com.miyou.framework.ProcessService;
@@ -40,9 +41,10 @@ public class ApiController {
 
     @ResponseBody
     @RequestMapping("/login")
-    public BusinessResponse login(@Validated @RequestBody LoginInfoReqAndRes reqInStr){
-        reqInStr.setLoginResponse("登录成功");
-        return reqInStr;
+    public LoginInfoReqAndRes login(@Validated @RequestBody String reqInStr){
+        LoginInfoReqAndRes reqIn = JSON.parseObject(reqInStr, LoginInfoReqAndRes.class);
+        reqIn.setResponseData("登录成功");
+        return reqIn;
     }
 
     @ResponseBody

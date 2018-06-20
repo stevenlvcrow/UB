@@ -16,4 +16,8 @@ public class BusinessResponse {
     public BusinessResponse(Object responseData){
         this.responseData=responseData;
     }
+
+    public boolean isFaild(){
+        return !this.errCode.equals(BusinessConstant.ERR_CODE.NORMAL);
+    }
 }

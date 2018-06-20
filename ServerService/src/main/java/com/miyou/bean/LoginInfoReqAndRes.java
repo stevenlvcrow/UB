@@ -13,5 +13,4 @@ public class LoginInfoReqAndRes extends BusinessResponse {
     @NotEmpty(message = "密码不能为空")
     private String pwd;
 
-    private String loginResponse;
 }

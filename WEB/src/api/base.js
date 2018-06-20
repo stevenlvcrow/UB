@@ -8,7 +8,7 @@ let base  = process.env.NODE_ENV === 'development' ? 'http://localhost:8769' : '
 
 // 请求时的拦截
 axios.interceptors.request.use(function (config) {
-    if(config.url.indexOf("login")>0){
+    if(config.url.indexOf("login")!==-1){
         return config;
     }
     let jse =new jsencrypt();
@@ -33,7 +33,7 @@ axios.interceptors.response.use((response) => {
 
     return data.responseData;
 }, error => {
-    console.log('12123')
+    console.log(error);
     Message.error({
         message: '加载失败'
     });

@@ -4,10 +4,7 @@ package com.miyou.tableVo;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -37,6 +34,7 @@ public class UbMenu implements java.io.Serializable{
     @Column(name = "iconCls", length = 20)
     private String iconCls;
 
+    @Transient
     private List<UbMenu> children;
 
 }

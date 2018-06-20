@@ -25,10 +25,10 @@ public class MerchantDels extends BuinessBridgeService {
     public void process(BusinessContext context) throws BusinessException, IllegalArgumentException {
         DelsRequest delsRequest = (DelsRequest) context.getBusinessRequest();
 
-        Integer result = merchantService.merchantDel(delsRequest.getIds());
-        if(result!=1){
+        BusinessResponse result = merchantService.merchantDel(delsRequest.getIds());
+        if(result.isFaild()){
             throw new BusinessException(BusinessConstant.ERR_CODE.FATAL, "删除数据失败.请重试");
         }
-        context.setBusinessResponse(new BusinessResponse());
+        context.setBusinessResponse(result);
     }
 }
