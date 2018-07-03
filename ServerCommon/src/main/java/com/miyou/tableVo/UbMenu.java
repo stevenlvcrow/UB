@@ -12,8 +12,6 @@ import java.util.List;
 public class UbMenu implements java.io.Serializable{
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid")
     private String id;
 
     @Column(name = "name", length = 10)

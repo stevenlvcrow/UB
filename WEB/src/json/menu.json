@@ -1,0 +1,30 @@
+[
+  {
+    "path":"a",
+    "name":"动态添加的一级菜单",
+    "component":"",
+    "hide":false,
+    "children":[
+      {
+        "path":"aa",
+        "name":"动态添加的二级菜单",
+        "component":"",
+        "hide":false,
+      }
+    ]
+  },
+  {
+    "path":"b",
+    "name":"动态添加的一级菜单",
+    "component":"",
+    "hide":false,
+    "children":[
+      {
+        "path":"bb",
+        "name":"动态添加的二级菜单",
+        "component":"",
+        "hide":false,
+      }
+    ]
+  }
+]

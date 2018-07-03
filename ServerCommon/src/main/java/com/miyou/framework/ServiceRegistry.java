@@ -26,7 +26,6 @@ public class ServiceRegistry {
                     existingService.getName(), key);
         }
         registry.put(key, service);
-
        log.info("注册服务: {}, {}", key, service.getName());
     }
 

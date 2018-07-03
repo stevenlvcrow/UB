@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Slf4j
@@ -54,11 +55,11 @@ public class MerchantController {
     public BusinessResponse del(@RequestBody String ids[]) {
         List<UbMerchant> ubMerchantList = new ArrayList<>();
         for (String id : ids) {
-            UbMerchant ubMerchant = new UbMerchant();
-            ubMerchant.setId(id);
-            Example<UbMerchant> example = Example.of(ubMerchant);
+            Optional<UbMerchant> ubMerchant = Optional.of(new UbMerchant());
+            ubMerchant.get().setId(id);
+            Example<UbMerchant> example = Example.of(ubMerchant.get());
             ubMerchant = merchantRepository.findOne(example);
-            ubMerchantList.add(ubMerchant);
+            ubMerchant.ifPresent(ubMerchantList::add);
         }
         merchantRepository.deleteInBatch(ubMerchantList);
         return new BusinessResponse();

@@ -2,6 +2,7 @@ const userInfo = {
     namespaced: true,
     state: {
         showRegisterDialog:false,
+        menu:[],
         registerForm:{},
     },
     getters: {
@@ -10,13 +11,12 @@ const userInfo = {
         }
     },
     mutations: {
-
+        setMenu(state, obj) {
+            state.menu = obj || [];
+        },
     },
     actions: {
-        resetForm({commit}) {
-            commit('clearMember');
 
-        },
 
     }
 };

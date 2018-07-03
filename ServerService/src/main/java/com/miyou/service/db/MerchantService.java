@@ -4,7 +4,7 @@ package com.miyou.service.db;
 import com.miyou.domain.BusinessResponse;
 import com.miyou.domain.PaddingParam;
 import com.miyou.tableVo.UbMerchant;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

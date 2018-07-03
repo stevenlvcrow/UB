@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.cache.interceptor.SimpleCacheErrorHandler;
@@ -22,14 +23,11 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 //maxInactiveIntervalInSeconds 默认是1800秒过期，这里测试修改为60秒
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds=60)
 @EnableCaching
-public class RedisCacheConfig {
+public class RedisCacheConfig extends CachingConfigurerSupport {
 
     @Bean
-    public CacheManager RedisCacheConfig(RedisTemplate redisTemplate) {
-        RedisCacheManager redisCacheManager = new RedisCacheManager(redisTemplate);
-        //缓存时间为一直有效
-        redisCacheManager.setDefaultExpiration(0);
-        return redisCacheManager;
+    public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+        return RedisCacheManager.create(connectionFactory);
     }
 
     @Bean
