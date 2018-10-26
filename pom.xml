@@ -41,7 +41,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<docker.image.prefix>vector4wang</docker.image.prefix>
+		<docker.image.prefix>ub</docker.image.prefix>
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -82,21 +82,10 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.13</version>
-				<executions>
-					<execution>
-						<id>build-image</id>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>1.0.0</version>
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<forceTags>true</forceTags>
-					<baseImage>docker.io/java</baseImage>
-					<entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
+					<dockerDirectory>src/main/docker</dockerDirectory>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
@@ -106,7 +95,6 @@
 					</resources>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>
