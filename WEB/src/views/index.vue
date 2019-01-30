@@ -2,9 +2,9 @@
     <section>
         <div class="desktop">
             <div id="win10-shortcuts" class="shortcuts-hidden">
-                <div class="shortcut"
-                     onclick="Win10.openUrl('http://win10ui.yuri2.cn',
-                 '<img class=\'icon\' src=\'static/icon/win10.png\'/>Win10-UI官网')">
+
+
+                <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'static/icon/win10.png\'/>Win10-UI官网')">
                     <img class="icon" src="static/icon/win10.png"/>
                     <div class="title">Win10-UI官网</div>
                 </div>
@@ -12,6 +12,8 @@
                     <img class="icon" src="static/icon/demo.png"/>
                     <div class="title">查看DEMO</div>
                 </div>
+
+
             </div>
             <div id="win10-desktop-scene"></div>
         </div>
