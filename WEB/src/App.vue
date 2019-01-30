@@ -1,33 +1,44 @@
 <template>
-  <div id="app">
-    <transition name="fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
-  </div>
+    <div id="win10">
+        <div id="aaa"></div>
+        <transition name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
+    </div>
 </template>
 
 
 <script>
-export default {
-    name: 'app'
-}
+    import WIN10 from '../src/common/resource/win10'
+    import layer from '../src/common/components/layer-v3.0.3/layer/layer.js'
+
+
+
+    export default {
+        name: 'win10',
+        mounted:function () {
+        }
+    }
+
 </script>
 
 <style lang="scss">
-  #app {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-  //background: url(assets/bg1.jpg) center !important;
-    background-size: cover;
-  //background: #1F2D3D;
-    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
-    font-size: 14px;
-    -webkit-font-smoothing: antialiased;
-  }
+
+    @import "./common/components/font-awesome-4.7.0/css/font-awesome.min.css";
+    @import "./common/components/layer-v3.0.3/layer/skin/default/layer.css";
+    @import "./common/resource/default.css";
+    @import "./common/resource/animate.css";
+
+
+
+
+    #win10 {
+        /*磁贴自定义样式*/
+        .win10-block-content-text {
+            line-height: 44px;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
 </style>
+

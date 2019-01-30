@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
+import $ from 'jquery'
 
 import routes from './routes'
 import store from './common/vuex/index'
